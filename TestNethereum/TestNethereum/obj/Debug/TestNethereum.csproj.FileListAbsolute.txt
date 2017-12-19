@@ -1,0 +1,13 @@
+C:\Side\dnb\TestNethereum\TestNethereum\TestNethereum\bin\Debug\TestNethereum.exe.config
+C:\Side\dnb\TestNethereum\TestNethereum\TestNethereum\bin\Debug\TestNethereum.exe
+C:\Side\dnb\TestNethereum\TestNethereum\TestNethereum\bin\Debug\TestNethereum.pdb
+C:\Side\dnb\TestNethereum\TestNethereum\TestNethereum\bin\Debug\BouncyCastle.Crypto.dll
+C:\Side\dnb\TestNethereum\TestNethereum\TestNethereum\bin\Debug\EdjCase.JsonRpc.Client.dll
+C:\Side\dnb\TestNethereum\TestNethereum\TestNethereum\bin\Debug\EdjCase.JsonRpc.Core.dll
+C:\Side\dnb\TestNethereum\TestNethereum\TestNethereum\bin\Debug\Nethereum.Portable.dll
+C:\Side\dnb\TestNethereum\TestNethereum\TestNethereum\bin\Debug\Newtonsoft.Json.dll
+C:\Side\dnb\TestNethereum\TestNethereum\TestNethereum\bin\Debug\BouncyCastle.Crypto.xml
+C:\Side\dnb\TestNethereum\TestNethereum\TestNethereum\bin\Debug\Newtonsoft.Json.xml
+C:\Side\dnb\TestNethereum\TestNethereum\TestNethereum\obj\Debug\TestNethereum.csprojResolveAssemblyReference.cache
+C:\Side\dnb\TestNethereum\TestNethereum\TestNethereum\obj\Debug\TestNethereum.exe
+C:\Side\dnb\TestNethereum\TestNethereum\TestNethereum\obj\Debug\TestNethereum.pdb
