@@ -17,6 +17,7 @@ namespace TestNethereum
     class Program
     {
         const string Endpoint = "http://cqethe3bu.southeastasia.cloudapp.azure.com:8545";
+        //const string Endpoint = "http://10.1.92.45:8545";
         const string AdminPortal = "http://cqethe3bu.southeastasia.cloudapp.azure.com";
 
         static void Main(string[] args)
@@ -31,8 +32,8 @@ namespace TestNethereum
             Console.WriteLine("Ketik enter untuk memulai koneksi ke Ethereum Node...");
             Console.ReadLine();
 
-            //Web3 web3 = new Web3(account, Endpoint);
-            Web3 web3 = new Web3(account);
+            Web3 web3 = new Web3(account, Endpoint);
+            //Web3 web3 = new Web3(account);
 
             Console.WriteLine();
             Console.WriteLine("------------------------------");
@@ -58,7 +59,7 @@ namespace TestNethereum
             Console.WriteLine("Ketik enter untuk demo mengirimkan Ether...");
             Console.ReadLine();
 
-            SendEther(web3, account).GetAwaiter().GetResult();
+            //SendEther(web3, account).GetAwaiter().GetResult();
 
             Console.WriteLine("Ketik enter untuk demo membaca smart contract...");
             Console.ReadLine();
@@ -220,26 +221,33 @@ namespace TestNethereum
 
         static async Task<bool> ChainyContract(Web3 web3, Account account)
         {
-            string contractABI = "[{\"constant\":false,\"inputs\":[{\"name\":\"code\",\"type\":\"string\"}],\"name\":\"getChainyData\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"view\"},{\"constant\":true,\"inputs\":[{\"name\":\"_address\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"bool\"}],\"name\":\"setServiceAccount\",\"outputs\":[],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"nonpayable\"},{\"constant\":false,\"inputs\":[],\"name\":\"getChainyURL\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"view\"},{\"constant\":true,\"inputs\":[{\"name\":\"_key\",\"type\":\"string\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"setConfig\",\"outputs\":[],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"nonpayable\"},{\"constant\":true,\"inputs\":[],\"name\":\"releaseFunds\",\"outputs\":[],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"nonpayable\"},{\"constant\":true,\"inputs\":[{\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"setReceiverAddress\",\"outputs\":[],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"nonpayable\"},{\"constant\":false,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"view\"},{\"constant\":false,\"inputs\":[{\"name\":\"code\",\"type\":\"string\"}],\"name\":\"getChainySender\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"view\"},{\"constant\":true,\"inputs\":[{\"name\":\"json\",\"type\":\"string\"}],\"name\":\"addChainyData\",\"outputs\":[],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"nonpayable\"},{\"constant\":false,\"inputs\":[{\"name\":\"_key\",\"type\":\"string\"}],\"name\":\"getConfig\",\"outputs\":[{\"name\":\"_value\",\"type\":\"uint256\"}],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"view\"},{\"constant\":false,\"inputs\":[{\"name\":\"code\",\"type\":\"string\"}],\"name\":\"getChainyTimestamp\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"view\"},{\"constant\":true,\"inputs\":[{\"name\":\"_url\",\"type\":\"string\"}],\"name\":\"setChainyURL\",\"outputs\":[],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"nonpayable\"},{\"constant\":true,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"nonpayable\"},{\"inputs\":[],\"payable\":true,\"type\":\"constructor\",\"stateMutability\":\"nonpayable\"},{\"anonymous\":true,\"inputs\":[{\"indexed\":true,\"name\":\"timestamp\",\"type\":\"uint256\"},{\"indexed\":true,\"name\":\"code\",\"type\":\"string\"}],\"name\":\"chainyShortLink\",\"type\":\"event\"}]";
-            string contractAddress = "0xff279852ed3532c700343768d7cabd0c3852e5df";
+            string contractABI = "[{\"constant\":false,\"inputs\":[{\"name\":\"code\",\"type\":\"string\"}],\"name\":\"getChainyData\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"view\"},{\"constant\":true,\"inputs\":[{\"name\":\"_address\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"bool\"}],\"name\":\"setServiceAccount\",\"outputs\":[],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"nonpayable\"},{\"constant\":false,\"inputs\":[],\"name\":\"getChainyURL\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"view\"},{\"constant\":true,\"inputs\":[{\"name\":\"_key\",\"type\":\"string\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"setConfig\",\"outputs\":[],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"nonpayable\"},{\"constant\":false,\"inputs\":[{\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"getLastChainy\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"view\"},{\"constant\":true,\"inputs\":[{\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"releaseFunds\",\"outputs\":[],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"nonpayable\"},{\"constant\":true,\"inputs\":[{\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"setReceiverAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"nonpayable\"},{\"constant\":false,\"inputs\":[{\"name\":\"code\",\"type\":\"string\"}],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"view\"},{\"constant\":false,\"inputs\":[{\"name\":\"code\",\"type\":\"string\"}],\"name\":\"getChainySender\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"view\"},{\"constant\":true,\"inputs\":[{\"name\":\"json\",\"type\":\"string\"}],\"name\":\"addChainyData\",\"outputs\":[{\"name\":\"_value\",\"type\":\"uint256\"}],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"nonpayable\"},{\"constant\":false,\"inputs\":[{\"name\":\"_key\",\"type\":\"string\"}],\"name\":\"getConfig\",\"outputs\":[{\"name\":\"_value\",\"type\":\"uint256\"}],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"view\"},{\"constant\":false,\"inputs\":[{\"name\":\"code\",\"type\":\"string\"}],\"name\":\"getChainyTimestamp\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"view\"},{\"constant\":true,\"inputs\":[{\"name\":\"_url\",\"type\":\"string\"}],\"name\":\"setChainyURL\",\"outputs\":[],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"nonpayable\"},{\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"payable\":true,\"type\":\"function\",\"stateMutability\":\"nonpayable\",\"constant\":true,\"name\":\"transferOwnership\",\"outputs\":[]},{\"anonymous\":true,\"inputs\":[{\"indexed\":true,\"name\":\"timestamp\",\"type\":\"uint256\"},{\"indexed\":true,\"name\":\"code\",\"type\":\"string\"}],\"name\":\"chainyShortLink\",\"type\":\"constructor\",\"payable\":true,\"stateMutability\":\"nonpayable\"},{\"anonymous\":true,\"inputs\":[{\"indexed\":true,\"name\":\"timestamp\",\"type\":\"uint256\"},{\"indexed\":true,\"name\":\"code\",\"type\":\"string\"}],\"name\":\"chainyShortLink\",\"type\":\"event\"}]";
+            string contractAddress = "0x12f728b05847f5ca6c40d1da5750affd740398ae";
 
             Contract contract = web3.Eth.GetContract(contractABI, contractAddress);
 
             var addChainyData = contract.GetFunction("addChainyData");
-            var chainyShortLinkEvent = contract.GetEvent("chainyShortLink");
-            var filterAll = await chainyShortLinkEvent.CreateFilterAsync();
+            //var chainyShortLinkEvent = contract.GetEvent("chainyShortLink");
+            //var filterAll = await chainyShortLinkEvent.CreateFilterAsync();
 
             var jsonstring = "{\"id\":\"smartinvoice\",\"version\":1,\"type\":\"L\",\"filename\":\"apple.jpg\",\"hash\":\"f2551293c0cc13f8bdf8f04c4c220ac6613d8703a0d076bde54a5ae74a9a3583\",\"filetype\":\"img\",\"filesize\":\"22665\"}";
 
             TransactionInput input = new TransactionInput();
             input.From = account.Address;
 
-            var price = addChainyData.EstimateGasAsync(jsonstring).GetAwaiter().GetResult();
-            input.Gas = price;
+            //var price = addChainyData.(jsonstring).GetAwaiter().GetResult();
+            //input.Gas = price;
+
+            input.Gas = new HexBigInteger(4000000);
 
             var transaction = await addChainyData.SendTransactionAndWaitForReceiptAsync(input, null, jsonstring);
             Console.WriteLine(transaction.TransactionHash);
 
+            Function getLastChainy = contract.GetFunction("getLastChainy");
+            var resultstring = await getLastChainy.CallAsync<string>(account.Address);
+
+            Console.WriteLine(resultstring);
+            Console.ReadLine();
             //var log = await chainyShortLinkEvent.GetFilterChanges<ChainyShortLinkEvent>(filterAll);
 
             //Console.WriteLine("Total event count: " + log.Count.ToString());
